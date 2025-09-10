@@ -1,12 +1,12 @@
 # App Password can be created in the user settings (Directory -> Token and App Passwords)
 
 @username=john
-@app_password=LW2SRbRfqAP4FeQS5wdubdshftTFqHcABFHpG8Svyn1yU4yWYDUNfy2cZGwf
-@client_id=lf8_starter_client
+@app_password=nt7su3vuTaxtsmKdlhr2RCbRD4tis5i7zBFJbbTWyeTjrRqTpQ513z73ZlV3
+@client_id=hitec_api_client
 
 
 ###
-POST http://localhost:9000/application/o/token/
+POST https://authentik.szut.dev/application/o/token/
 Content-Type: application/x-www-form-urlencoded
 
 grant_type = client_credentials &

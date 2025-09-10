@@ -51,9 +51,6 @@ docker compose up
 
 ### JWT Token
 Um einen JWT Token zu generieren, der für die Authentifizierung benötigt wird, gehen Sie wie folgt vor:
-1. Authentik im Browser öffnen: http://localhost:9000 und mit dem Admin-User anmelden (a@b.com / secret)
-2. Unter Directory -> Tokens and App Passwords für den Benutzer john ein neues App-Password erstellen
-3. Auf der Projektebene [GetBearerToken.http](GetBearerToken.http) öffnen.
-4. Das App-Passwword eintragen
-5. Neben der Request auf den grünen Pfeil drücken
-6. Aus dem Reponse das access_token kopieren
+1. Auf der Projektebene [GetBearerToken.http](GetBearerToken.http) öffnen.
+2. Neben der Request auf den grünen Pfeil drücken
+3. Aus dem Reponse das access_token kopieren
