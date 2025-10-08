@@ -7,6 +7,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDate;
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
@@ -17,23 +19,36 @@ public class ProjectEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long pid;
+    private Long id;
 
 
     private String designation;
 
-    // TODO: verantwortlicherMitarbeiterId
 
-    // TODO: Kunden-ID
+    @Column(name = "responsible_employee_id", nullable = false)
+    private Long responsibleEmployeeId;
 
-    // TODO: Kundenzuständiger
 
-    // TODO: Kommentar
+    @Column(name = "customer_id",nullable = false)
+    private Long customerId;
 
-    // TODO: Startdatum
 
-    // TODO: geplantesEnddatum
+    @Column(name = "customer_contact_person")
+    private String customerContactPerson;
 
-    // TODO: Enddatum
 
+    @Column(name = "comment",nullable = false)
+    private String comment;
+
+
+    @Column(name = "start_date")
+    private LocalDate startDate;
+
+
+    @Column(name = "planned_end_date")
+    private LocalDate plannedEndDate;
+
+
+    @Column(name = "end_date")
+    private LocalDate endDate;
 }
