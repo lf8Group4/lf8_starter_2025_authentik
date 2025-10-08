@@ -51,4 +51,5 @@ public class ProjectEntity {
 
     @Column(name = "end_date")
     private LocalDate endDate;
+
 }
