@@ -12,6 +12,11 @@ public class ProjectService {
         this.projectRepository = projectRepository;
     }
 
+    public ProjectEntity getById(Long id){
+        return projectRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Project with ID " + id + " does not exist."));
+    }
+
     public void delete(Long id) {
         if (!projectRepository.existsById(id)) {
             throw new ResourceNotFoundException("Project with ID " + id + " does not exist.");
