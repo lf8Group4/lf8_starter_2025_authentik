@@ -7,6 +7,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.LinkedList;
+import java.util.List;
+
 @RestController
 @RequestMapping("/projects")
 public class ProjectController {
@@ -17,6 +20,16 @@ public class ProjectController {
     public ProjectController(ProjectService service, MappingService mappingService) {
         this.service = service;
         this.mappingService = mappingService;
+    }
+
+    @GetMapping()
+    public ResponseEntity<List<GetProjectDto>> getAllProjects() {
+        List<ProjectEntity> projects = this.service.getAll();
+        List<GetProjectDto> list = new LinkedList<>();
+        for (ProjectEntity project : projects) {
+            list.add(this.mappingService.mapProjectEntityToGetProjectDto(project));
+        }
+        return new ResponseEntity<>(list, HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
