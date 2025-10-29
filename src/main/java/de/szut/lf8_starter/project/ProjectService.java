@@ -3,6 +3,8 @@ package de.szut.lf8_starter.project;
 import de.szut.lf8_starter.exceptionHandling.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ProjectService {
 
@@ -12,7 +14,7 @@ public class ProjectService {
         this.projectRepository = projectRepository;
     }
 
-    public ProjectEntity getById(Long id){
+    public ProjectEntity getById(Long id) {
         return projectRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Project with ID " + id + " does not exist."));
     }
@@ -22,5 +24,9 @@ public class ProjectService {
             throw new ResourceNotFoundException("Project with ID " + id + " does not exist.");
         }
         projectRepository.deleteById(id);
+    }
+
+    public List<ProjectEntity> getAll() {
+        return this.projectRepository.findAll();
     }
 }
