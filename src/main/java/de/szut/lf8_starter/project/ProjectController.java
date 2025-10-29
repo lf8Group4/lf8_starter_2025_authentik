@@ -12,7 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/projects")
-public class ProjectController {
+public class ProjectController implements ProjectControllerOpenAPI {
 
     private final ProjectService service;
     private final MappingService mappingService;
@@ -22,6 +22,7 @@ public class ProjectController {
         this.mappingService = mappingService;
     }
 
+    @Override
     @GetMapping()
     public ResponseEntity<List<GetProjectDto>> getAllProjects() {
         List<ProjectEntity> projects = this.service.getAll();
@@ -32,6 +33,7 @@ public class ProjectController {
         return new ResponseEntity<>(list, HttpStatus.OK);
     }
 
+    @Override
     @GetMapping("/{id}")
     public ResponseEntity<GetProjectDto> getProjectById(@PathVariable Long id) {
         ProjectEntity project = service.getById(id);
@@ -39,8 +41,9 @@ public class ProjectController {
         return new ResponseEntity<>(dto, HttpStatus.OK);
     }
 
+    @Override
     @DeleteMapping("/{id}")
-    @ResponseStatus(HttpStatus.OK)
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteProject(@PathVariable Long id) {
         service.delete(id);
     }
