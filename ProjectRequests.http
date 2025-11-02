@@ -1,0 +1,36 @@
+
+@access_token = <SET_TOKEN_HERE> //hier token einfügen
+
+### 1) Projekt anlegen → erwartet 201 Created + JSON + Location
+POST http://localhost:8080/api/projects
+Authorization: Bearer {{access_token}}
+Content-Type: application/json
+Accept: application/json
+
+{
+  "designation": "LF08 PMS",
+  "responsibleEmployeeId": 1,
+  "customerId": 2,
+  "customerContactPerson": "Max",
+  "comment": "Demo",
+  "startDate": "2025-01-01"
+}
+
+> {%
+    const b = typeof response.body === 'string' ? JSON.parse(response.body) : response.body;
+    if (b && b.id) client.global.set("project_id", String(b.id));
+%}
+
+###
+
+### 2) (optional) Projekt per ID abrufen
+GET http://localhost:8080/api/projects/{{project_id}}
+Authorization: Bearer {{access_token}}
+Accept: application/json
+
+###
+
+### 3) (optional) Alle Projekte abrufen
+GET http://localhost:8080/api/projects
+Authorization: Bearer {{access_token}}
+Accept: application/json
