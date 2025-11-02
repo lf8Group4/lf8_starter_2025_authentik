@@ -2,7 +2,9 @@ package de.szut.lf8_starter.project;
 
 
 import de.szut.lf8_starter.mapping.MappingService;
+import de.szut.lf8_starter.project.dto.CreateProjectDto;
 import de.szut.lf8_starter.project.dto.GetProjectDto;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -20,6 +22,15 @@ public class ProjectController implements ProjectControllerOpenAPI {
     public ProjectController(ProjectService service, MappingService mappingService) {
         this.service = service;
         this.mappingService = mappingService;
+    }
+
+    @Override
+    @PostMapping
+    public ResponseEntity<GetProjectDto> createProject(@RequestBody @Valid CreateProjectDto createProjectDto) {
+        ProjectEntity newProject = mappingService.mapCreateProjectDtoToProject(createProjectDto);
+        newProject = service.create(newProject);
+        GetProjectDto responseDto = mappingService.mapProjectEntityToGetProjectDto(newProject);
+        return new ResponseEntity<>(responseDto, HttpStatus.CREATED);
     }
 
     @Override
