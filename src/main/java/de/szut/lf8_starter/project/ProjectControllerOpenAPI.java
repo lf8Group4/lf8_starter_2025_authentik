@@ -1,10 +1,12 @@
 package de.szut.lf8_starter.project;
 
+import de.szut.lf8_starter.project.dto.CreateProjectDto;
 import de.szut.lf8_starter.project.dto.GetProjectDto;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.ArraySchema;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
@@ -16,6 +18,19 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import java.util.List;
 
 public interface ProjectControllerOpenAPI {
+
+    @Operation(summary = "Creates a new project")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "201", description = "Project created successfully",
+                    content = {@Content(mediaType = "application/json",
+                            schema = @Schema(implementation = GetProjectDto.class))}),
+            @ApiResponse(responseCode = "400", description = "Invalid JSON or validation error (z.B. verantwortlicher Mitarbeiter/Kunde nicht gefunden)",
+                    content = @Content),
+            @ApiResponse(responseCode = "401", description = "Not authorized",
+                    content = @Content)
+    })
+    ResponseEntity<GetProjectDto> createProject(@RequestBody(description = "Project details to create") CreateProjectDto dto);
+
 
     @Operation(summary = "Retrieve a list of all projects")
     @ApiResponses(value = {
