@@ -37,18 +37,12 @@ public class EmployeeServiceClient {
         }
     }
 
-    /**
-     * NEU: Ruft die detaillierten Mitarbeiterdaten vom externen Service ab.
-     * (Wird für den GET /projects/{id}/employees Endpunkt verwendet)
-     */
     public EmployeeDto getEmployeeDetails(Long employeeId) throws HttpClientErrorException {
-        // Wir nehmen an, der externe Service gibt ein Objekt zurück, das wir in EmployeeApiDetailDto mappen können.
         EmployeeApiDetailDto apiDetails = restTemplate.getForObject(
                 EMPLOYEE_SERVICE_BASE_URL + employeeId,
                 EmployeeApiDetailDto.class
         );
 
-        // Mapping der externen API-Struktur auf unser internes EmployeeDto
         if (apiDetails == null) {
             return null;
         }
@@ -66,7 +60,6 @@ public class EmployeeServiceClient {
         );
     }
 
-    // --- Interne DTOs zur Abbildung der externen API-Struktur (vereinfacht) ---
 
     @Data
     private static class EmployeeApiDetailDto {
