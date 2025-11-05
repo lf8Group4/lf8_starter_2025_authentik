@@ -237,7 +237,7 @@ public class ProjectIT extends AbstractIntegrationTest {
                     "startDate": "2028-01-01",
                     "plannedEndDate": "2028-04-30" 
                 }
-                """, EMPLOYEE_ID_VALID, CUSTOMER_ID); // KORREKTUR: Kommentar entfernt
+                """, EMPLOYEE_ID_VALID, CUSTOMER_ID); 
 
         this.mockMvc.perform(put(ENDPOINT + "/" + projectId)
                         .contentType(MediaType.APPLICATION_JSON)
@@ -258,7 +258,7 @@ public class ProjectIT extends AbstractIntegrationTest {
                     "startDate": "2028-01-01",
                     "plannedEndDate": "2028-04-30"
                 }
-                """, EMPLOYEE_ID_INVALID, CUSTOMER_ID); // KORREKTUR: Kommentar entfernt
+                """, EMPLOYEE_ID_INVALID, CUSTOMER_ID); 
 
         this.mockMvc.perform(put(ENDPOINT + "/" + projectId)
                         .contentType(MediaType.APPLICATION_JSON)
