@@ -1,6 +1,7 @@
 package de.szut.lf8_starter.project;
 
 
+import de.szut.lf8_starter.project_employee.ProjectEmployeeEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -8,6 +9,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -51,5 +54,8 @@ public class ProjectEntity {
 
     @Column(name = "end_date")
     private LocalDate endDate;
+
+    @OneToMany(mappedBy = "project", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<ProjectEmployeeEntity> employees = new ArrayList<>();
 
 }
