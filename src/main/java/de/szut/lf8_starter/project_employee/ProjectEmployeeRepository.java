@@ -9,13 +9,11 @@ public interface ProjectEmployeeRepository extends JpaRepository<ProjectEmployee
 
     /**
      * Findet alle Projektzuordnungen für einen bestimmten Mitarbeiter.
-     * Wird für die Prüfung auf Verplanung (409-Konflikt) benötigt.
      */
     List<ProjectEmployeeEntity> findAllByEmployeeId(Long employeeId);
 
     /**
-     * NEU: Findet eine spezifische Zuordnung anhand von Projekt-ID und Mitarbeiter-ID.
-     * Wird für die Story "Mitarbeiter aus Projekt entfernen" benötigt.
+     * Findet eine spezifische Zuordnung anhand von Projekt-ID und Mitarbeiter-ID.
      */
     Optional<ProjectEmployeeEntity> findByProjectIdAndEmployeeId(Long projectId, Long employeeId);
 }
