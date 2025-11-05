@@ -2,6 +2,7 @@ package de.szut.lf8_starter.project;
 
 import de.szut.lf8_starter.mapping.MappingService;
 import de.szut.lf8_starter.project.dto.GetProjectDto;
+import de.szut.lf8_starter.project_employee.ProjectEmployeeService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
@@ -31,6 +32,9 @@ public class ProjectControllerGetAllTest {
 
     @MockBean
     private MappingService mappingService;
+
+    @MockBean
+    private ProjectEmployeeService projectEmployeeService;
 
     @Test
     @WithMockUser

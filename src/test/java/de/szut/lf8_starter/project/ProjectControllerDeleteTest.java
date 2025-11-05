@@ -2,6 +2,7 @@ package de.szut.lf8_starter.project;
 
 import de.szut.lf8_starter.exceptionHandling.ResourceNotFoundException;
 import de.szut.lf8_starter.mapping.MappingService;
+import de.szut.lf8_starter.project_employee.ProjectEmployeeService;
 import de.szut.lf8_starter.testcontainers.AbstractProjectIntegrationTest;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +29,9 @@ public class ProjectControllerDeleteTest  {
 
     @MockBean
     private MappingService mappingService;
+
+    @MockBean
+    private ProjectEmployeeService projectEmployeeService;
 
     @Test
     @WithMockUser
